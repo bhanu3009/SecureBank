@@ -81,32 +81,96 @@
 // console.log(large)
 
 
-// The Execution:
+// const dailyLimit=20000;
+// let currentBalance=10000;
+// let remaining_limt=dailyLimit;
+// let pending_withdrawa=[5000, 25000, 10000, 2000];
+// for(let i=0;i<pending_withdrawa.length;i++){
+//     if(pending_withdrawa[i]<=currentBalance && pending_withdrawa[i]<=dailyLimit){
+//     currentBalance=currentBalance-pending_withdrawa[i];
+//     remaining_limt=pending_withdrawa[i]-remaining_limt;
+//     console.log("Transaction of :"+pending_withdrawa[i]+" Approved. New Balance :"+pending_withdrawa[i]);
+//     }else{
+//         console.log("transtion declined");
+//     }
+// }
 
-// Set the Stage: Declare a sealed variable for a dailyLimit (e.g., 20000). Declare a flexible variable for the currentBalance (e.g., 50000).
 
-// The Data: Create an array containing four pending withdrawal requests (e.g., 5000, 25000, 10000, 2000).
 
-// The Processor: Write a for loop that is designed to examine every single item in your array, one by one.
+// function add(input1,input2){
+//     tol=input1+input2;
+//     sum=tol;
+//     return sum;
+// }
+// let a=[10, 20, 30, 40, 50 , 60 , 70 , 80 , 90 ]
+// fina=[];
+// for (let i=0;i<a.length-1;i++){
+//     let result=add(a[i],a[i+1]);
+//     fina.push(result);
+// }
+// for(let i=0;i<fina.length;i++){
+//     console.log("you sum for the "+i+" array is :"+fina[i])
+// }
 
-// The Logic Gate (Inside the Loop): Inside your loop, place an if/else condition. For every transaction amount the loop looks at, it must check:
 
-// Is the requested amount less than or equal to the currentBalance AND less than or equal to the dailyLimit?
+// const daily_limt=10000;
+// let remaining_limt=daily_limt,current_balance=1000000;
+// let final_output=[];
+// function check(tarnsetion_amt,remaining_limt){
+//     if(tarnsetion_amt>remaining_limt){
+//         console.log("you transction is decline due to insufficent fundus or limt reached.")
+//     }else if(tarnsetion_amt>current_balance){
+//         console.log("insufficent balance. ");
+//     }else{
+//         current_balance=current_balance-tarnsetion_amt;
+//         remaining_limt=remaining_limt-tarnsetion_amt;
+//     }
+//     return current_balance;
+// }
+// let pending_trans=[100,200,300,4040,500,600,700,800,900,1000];
+// for(let i=0;i<pending_trans.length;i++){
+//     output=check(pending_trans[i],remaining_limt)
+//     final_output.push(output);
+// }
+// for(let i=0;i<pending_trans.length;i++){
+//     console.log("Balance after transaction "+(i + 1)+" is: "+final_output[i]);
+// }
 
-// If true: Subtract the amount from the currentBalance, deduct the amount from the remaining dailyLimit, and print a message saying "Transaction of [Amount] Approved. New Balance: [Balance]".
 
-// If false: Do not change the balance or the limit. Print a message saying "Transaction of [Amount] Declined due to insufficient funds or limit breach."
+// gemini did this
+// function formatCurrency(amount) {
+//     let formattedNumber = amount.toFixed(2);
+//     let finalString = "$" + formattedNumber;
+//     return finalString;
+// }
 
-const dailyLimit=20000;
-let currentBalance=10000;
-let remaining_limt=dailyLimit;
-let pending_withdrawa=[5000, 25000, 10000, 2000];
-for(let i=0;i<pending_withdrawa.length;i++){
-    if(pending_withdrawa[i]<=currentBalance && pending_withdrawa[i]<=dailyLimit){
-    currentBalance=currentBalance-pending_withdrawa[i];
-    remaining_limt=pending_withdrawa[i]-remaining_limt;
-    console.log("Transaction of :"+pending_withdrawa[i]+" Approved. New Balance :"+pending_withdrawa[i]);
-    }else{
-        console.log("transtion declined");
+// console.log(formatCurrency(5));
+// console.log(formatCurrency(1234.567));
+// console.log(formatCurrency(10.987));
+
+
+function processDailyBatch(input_arr,remaining_limt,remaining_limt){
+        if(input_arr>current_balance && input_arr>=remaining_limt){
+            console.log("insufficent balance or reached the daily transction limt. ");
+        }else if(input_arr>remaining_limt){
+            console.log("daily limit reached.");
+        }else {
+            current_balance=current_balance-input_arr;
+            remaining_limt=remaining_limt-input_arr;
+            console.log("You transcation is approved !")
+        return current_balance;
+        }
     }
+
+const daily_limt=100000;
+let remaining_limt=daily_limt,current_balance=10000;
+let final_output=[];
+let input_arr=[100,200,300,400,500,600,700,800,900];
+
+for(let i=0;i<input_arr.length;i++){
+    let output=processDailyBatch(input_arr[i],remaining_limt,remaining_limt);
+    final_output.push(output);
+}
+for(let i = 0; i < input_arr.length; i++) {
+    console.log("Balance after transaction " +(i + 1)+" is: "+ final_output[i]);
 }
