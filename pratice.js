@@ -149,28 +149,150 @@
 // console.log(formatCurrency(10.987));
 
 
-function processDailyBatch(input_arr,remaining_limt,remaining_limt){
-        if(input_arr>current_balance && input_arr>=remaining_limt){
-            console.log("insufficent balance or reached the daily transction limt. ");
-        }else if(input_arr>remaining_limt){
-            console.log("daily limit reached.");
-        }else {
-            current_balance=current_balance-input_arr;
-            remaining_limt=remaining_limt-input_arr;
-            console.log("You transcation is approved !")
-        return current_balance;
+// function processDailyBatch(input_arr,remaining_limt,remaining_limt){
+//         if(input_arr>current_balance && input_arr>=remaining_limt){
+//             console.log("insufficent balance or reached the daily transction limt. ");
+//         }else if(input_arr>remaining_limt){
+//             console.log("daily limit reached.");
+//         }else {
+//             current_balance=current_balance-input_arr;
+//             remaining_limt=remaining_limt-input_arr;
+//             console.log("You transcation is approved !")
+//         return current_balance;
+//         }
+//     }
+
+// const daily_limt=100000;
+// let remaining_limt=daily_limt,current_balance=10000;
+// let final_output=[];
+// let input_arr=[100,200,300,400,500,600,700,800,900];
+
+// for(let i=0;i<input_arr.length;i++){
+//     let output=processDailyBatch(input_arr[i],remaining_limt,remaining_limt);
+//     final_output.push(output);
+// }
+// for(let i = 0; i < input_arr.length; i++) {
+//     console.log("Balance after transaction " +(i + 1)+" is: "+ final_output[i]);
+// }
+
+// let student={
+//     identity_card:1001,
+//     name:"Bhanu",
+//     age:20,
+//     height:6.2,
+//     weight:57.86,
+//     physical_handycap:false,
+//     sleep:function() {
+//         console.log("im goingto sleep. ");
+//     }
+// }
+
+// console.log("Your current age is :"+student.age);
+// console.log(student.identity_card);
+// console.log(student.weight);
+// console.log(student.name);
+// console.log(student.height);
+// console.log("Hello :"+student.name+". Your age is :"+student.age+" and you are been eleigible becuse your height is :"+student.height+". Your weight is less due to u r weighht is :"+student.weight)
+
+
+// let coustumer ={
+//     name:"bhanu",
+//     account_number:10001010,
+//     current_balance:1000000,
+//     account_type: "Savings",
+// } 
+
+// console.log("hi "+coustumer.name+". Your current account balance is :"+coustumer.current_balance+"💰. in your :"+coustumer.account_type+". With the account no :"+coustumer.account_number);
+
+
+// let single_transaction={
+//     amount:1000000,
+//     type:"Debit", 
+//     date:"2026-04-14",
+//     description:"Welcome to bank of security.",
+//     reference_number:100,
+// }
+// console.log("Your refference id is :"+single_transaction.reference_number+" and the transtion amt is :"+single_transaction.amount+". The amt is been transfer using the "+single_transaction.type+" on "+single_transaction.date+" with an description left as :"+single_transaction.description+".");
+
+// let Beneficiary={
+//     name:"bhanu",
+//     account_number:100101010,
+//     IFSC_code:"AGS67H2JJ20987",
+//     bank_name:"SECURE_BANK",
+//     nickname:"piggy",
+// }
+
+
+
+// let customerProfile=[
+//     {
+//     name:"Bhanu",
+//     balance: 50000,
+//     dailyLimit:20000,
+// },{
+//     name:"jhanu",
+//     balance: 10000,
+//     dailyLimit:20000,
+// },{
+//     name:"phanu",
+//     balance: 20000,
+//     dailyLimit:20000,
+// }
+// ]
+
+// console.log("Welocome :"+customerProfile[1].name);
+// for(let i=0;i<customerProfile.length;i++){
+//     console.log("printing the arrays in  the list :"+customerProfile[i].name)
+// }
+
+// function search(name){
+// let target=name;
+// for(let i=0;i<customerProfile.length;i++){
+// if (customerProfile[i]===target){
+//     let temp=i;
+//     return temp;
+//     }
+// }
+// }
+// let result=[];
+// result.push(search("jhanu"));
+// console.log("The input ahs been find in the "+result+" index.")
+
+
+
+const customerProfile={
+    name:"bhanu",
+    balance :50000,
+    dailyLimit: 20000,
+}
+
+let arr=[
+    {
+    amount:100001,
+    type : "CREDIT",
+},{
+    amount:13001,
+    type : "DEBIT",
+},{
+    amount:200001,
+    type : "CREDIT",
+},
+]
+
+function processAccountBatch(customerProfile,arr){
+    for(let i=0;i<arr.length;i++){
+        if(arr[i].type==="CREDIT"){
+            customerProfile.balance=customerProfile.balance+arr[i].amount;
+        }else if(arr[i].type==="DEBIT" && arr[i].amount<=customerProfile.balance && arr[i].amount<=customerProfile.dailyLimit) {
+            customerProfile.balance = customerProfile.balance - arr[i].amount;
+            customerProfile.dailyLimit = customerProfile.dailyLimit - arr[i].amount;
         }
     }
-
-const daily_limt=100000;
-let remaining_limt=daily_limt,current_balance=10000;
-let final_output=[];
-let input_arr=[100,200,300,400,500,600,700,800,900];
-
-for(let i=0;i<input_arr.length;i++){
-    let output=processDailyBatch(input_arr[i],remaining_limt,remaining_limt);
-    final_output.push(output);
+    return customerProfile;
 }
-for(let i = 0; i < input_arr.length; i++) {
-    console.log("Balance after transaction " +(i + 1)+" is: "+ final_output[i]);
-}
+let result;
+result=processAccountBatch(customerProfile,arr);
+console.log("Your final ans :",result);
+
+
+
