@@ -260,39 +260,139 @@
 
 
 
-const customerProfile={
-    name:"bhanu",
-    balance :50000,
-    dailyLimit: 20000,
-}
+// const customerProfile={
+//     name:"bhanu",
+//     balance :50000,
+//     dailyLimit: 20000,
+// }
 
-let arr=[
+// let arr=[
+//     {
+//     amount:100001,
+//     type : "CREDIT",
+// },{
+//     amount:13001,
+//     type : "DEBIT",
+// },{
+//     amount:200001,
+//     type : "CREDIT",
+// },
+// ]
+
+// function processAccountBatch(customerProfile,arr){
+//     for(let i=0;i<arr.length;i++){
+//         if(arr[i].type==="CREDIT"){
+//             customerProfile.balance=customerProfile.balance+arr[i].amount;
+//         }else if(arr[i].type==="DEBIT" && arr[i].amount<=customerProfile.balance && arr[i].amount<=customerProfile.dailyLimit) {
+//             customerProfile.balance = customerProfile.balance - arr[i].amount;
+//             customerProfile.dailyLimit = customerProfile.dailyLimit - arr[i].amount;
+//         }
+//     }
+//     return customerProfile;
+// }
+// let result;
+// result=processAccountBatch(customerProfile,arr);
+// console.log("Your final ans :",result);
+
+// let bank_data=[
+//     {
+//         id:200200,
+//         current_bal:10011,
+//         type:"Savings",
+//         transactions:"debit",
+//         transfer_amt:300.20,
+//     }, {
+//         id:200130,
+//         current_bal:20221,
+//         type:"Savings",
+//         transactions:"credit",
+//         transfer_amt:200.20,
+//     }, {
+//         id:300200,
+//         current_bal:11011,
+//         type:"Savings",
+//         transactions:"debit",
+//         transfer_amt:3110.20,
+//     }, {
+//         id:234200,
+//         current_bal:50011,
+//         type:"Savings",
+//         transactions:"credit",
+//         transfer_amt:3020.20,
+//     },
+// ]
+
+// function debit(arr){
+//     let result_debit=[];
+//     for(let i=0;i<arr.length;i++){
+//         if(arr[i].transactions==="debit"){
+//             result_debit.push(arr[i]);
+//         }
+//     }
+//     return result_debit;
+// }
+// function credit(arr){
+//     let result_credit=[];
+//     for(let i=0;i<arr.length;i++){
+//         if(arr[i].transactions==="credit"){
+//             result_credit.push(arr[i]);
+//         }
+//     }
+//     return result_credit;
+// }
+// let final=credit(bank_data)
+// console.log(final);
+// let fin=debit(bank_data)
+// console.log(fin);
+
+
+let hi=[
     {
-    amount:100001,
-    type : "CREDIT",
-},{
-    amount:13001,
-    type : "DEBIT",
-},{
-    amount:200001,
-    type : "CREDIT",
-},
+        amounts:1000,
+        types:"DEBIT",
+        statusbar:"SUCCESS",
+    },{
+        amounts:2000,
+        types:"CREDIT",
+        statusbar:"SUCCESS",
+    },{
+        amounts:3000,
+        types:"DEBIT",
+        statusbar:"FAILED",
+    },{
+        amounts:4000,
+        types:"CREDIT",
+        statusbar:"SUCCESS",
+    },{
+        amounts:6000,
+        types:"DEBIT",
+        statusbar:"SUCCESS",
+    },{
+        amounts:9000,
+        types:"CREDIT",
+        statusbar:"SUCCESS",
+    },
 ]
 
-function processAccountBatch(customerProfile,arr){
+function filtering(arr){
+    let success=[];
     for(let i=0;i<arr.length;i++){
-        if(arr[i].type==="CREDIT"){
-            customerProfile.balance=customerProfile.balance+arr[i].amount;
-        }else if(arr[i].type==="DEBIT" && arr[i].amount<=customerProfile.balance && arr[i].amount<=customerProfile.dailyLimit) {
-            customerProfile.balance = customerProfile.balance - arr[i].amount;
-            customerProfile.dailyLimit = customerProfile.dailyLimit - arr[i].amount;
+        if(arr[i].statusbar==="SUCCESS")
+            success.push(arr[i]);
+    }
+    let final_amt=0;
+    for(let i=0;i<success.length;i++){
+        if(success[i].types==="CREDIT"){
+            final_amt=final_amt+success[i].amounts;
+        }else if(success[i].types==="DEBIT"){
+            final_amt=final_amt-success[i].amounts;
         }
     }
-    return customerProfile;
+    return{
+        temp_sucess: success,
+        temp_reult:final_amt
+    };
 }
-let result;
-result=processAccountBatch(customerProfile,arr);
-console.log("Your final ans :",result);
 
-
-
+let result=filtering(hi);
+console.log("your final result :",result);

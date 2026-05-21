@@ -3,7 +3,6 @@ const customerProfile={
     balance :50000,
     dailyLimit: 20000,
 }
-
 let arr=[
     {
     amount:100001,
@@ -16,7 +15,6 @@ let arr=[
     type : "CREDIT",
 },
 ]
-
 function processAccountBatch(customerProfile,arr){
     for(let i=0;i<arr.length;i++){
         if(arr[i].type==="CREDIT"){
