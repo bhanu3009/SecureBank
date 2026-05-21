@@ -346,53 +346,123 @@
 // console.log(fin);
 
 
+// let hi=[
+//     {
+//         amounts:1000,
+//         types:"DEBIT",
+//         statusbar:"SUCCESS",
+//     },{
+//         amounts:2000,
+//         types:"CREDIT",
+//         statusbar:"SUCCESS",
+//     },{
+//         amounts:3000,
+//         types:"DEBIT",
+//         statusbar:"FAILED",
+//     },{
+//         amounts:4000,
+//         types:"CREDIT",
+//         statusbar:"SUCCESS",
+//     },{
+//         amounts:6000,
+//         types:"DEBIT",
+//         statusbar:"SUCCESS",
+//     },{
+//         amounts:9000,
+//         types:"CREDIT",
+//         statusbar:"SUCCESS",
+//     },
+// ]
+
+// function filtering(arr){
+//     let success=[];
+//     for(let i=0;i<arr.length;i++){
+//         if(arr[i].statusbar==="SUCCESS")
+//             success.push(arr[i]);
+//     }
+//     let final_amt=0;
+//     for(let i=0;i<success.length;i++){
+//         if(success[i].types==="CREDIT"){
+//             final_amt=final_amt+success[i].amounts;
+//         }else if(success[i].types==="DEBIT"){
+//             final_amt=final_amt-success[i].amounts;
+//         }
+//     }
+//     return{
+//         temp_sucess: success,
+//         temp_reult:final_amt
+//     };
+// }
+
+// let result=filtering(hi);
+// console.log("your final result :",result);
+
+
 let hi=[
     {
-        amounts:1000,
-        types:"DEBIT",
-        statusbar:"SUCCESS",
+        name:"bhanu",
+        accountNumber:10001,
+        balance:10000,
     },{
-        amounts:2000,
-        types:"CREDIT",
-        statusbar:"SUCCESS",
+        name:"jhanu",
+        accountNumber:20001,
+        balance:2000,
     },{
-        amounts:3000,
-        types:"DEBIT",
-        statusbar:"FAILED",
+        name:"thanu",
+        accountNumber:30001,
+        balance:30000,
     },{
-        amounts:4000,
-        types:"CREDIT",
-        statusbar:"SUCCESS",
+        name:"phanu",
+        accountNumber:40001,
+        balance:40000,
     },{
-        amounts:6000,
-        types:"DEBIT",
-        statusbar:"SUCCESS",
+        name:"ahanu",
+        accountNumber:50001,
+        balance:500,
     },{
-        amounts:9000,
-        types:"CREDIT",
-        statusbar:"SUCCESS",
+        name:"ihanu",
+        accountNumber:60001,
+        balance:60000,
     },
-]
+];
 
-function filtering(arr){
-    let success=[];
-    for(let i=0;i<arr.length;i++){
-        if(arr[i].statusbar==="SUCCESS")
-            success.push(arr[i]);
-    }
-    let final_amt=0;
-    for(let i=0;i<success.length;i++){
-        if(success[i].types==="CREDIT"){
-            final_amt=final_amt+success[i].amounts;
-        }else if(success[i].types==="DEBIT"){
-            final_amt=final_amt-success[i].amounts;
-        }
-    }
-    return{
-        temp_sucess: success,
-        temp_reult:final_amt
-    };
+let empt=[];
+for (let i=0;i<hi.length;i++){
+    if (hi[i].balance>10000)
+        empt.push(hi[i]);
+}
+console.log("The list of the rich one is :",empt);
+
+let rich=hi[0];
+for (let i=0;i<hi.length;i++){
+    if (hi[i].balance>rich.balance)
+        rich=hi[i];
 }
 
-let result=filtering(hi);
-console.log("your final result :",result);
+console.log("list of high no :",empt);
+console.log(`The rich one is ${rich.name} and the amt is ${rich.balances}`);
+
+
+
+// // 1. The State: Array of 5 Customer Objects
+// let customers = [
+//     { name: "bhanu", accountNumber: 10001, balance: 15000 },
+//     { name: "jhanu", accountNumber: 20001, balance: 5000 },
+//     { name: "thanu", accountNumber: 30001, balance: 85000 },
+//     { name: "phanu", accountNumber: 40001, balance: 9000 },
+//     { name: "ihanu", accountNumber: 50001, balance: 60000 }
+// ];
+// let highRollers = [];
+// for (let i = 0; i < customers.length; i++) {
+//     if (customers[i].balance > 10000) {
+//         highRollers.push(customers[i]); 
+//     }
+// }
+// let richestCustomer = customers[0]; 
+// for (let i = 0; i < customers.length; i++) {
+//     if (customers[i].balance > richestCustomer.balance) {
+//         richestCustomer = customers[i];
+//     }
+// }
+// console.log("Filtered High Rollers: ", highRollers);
+// console.log(`The richest person is ${richestCustomer.name} with $${richestCustomer.balance}`);
