@@ -398,49 +398,49 @@
 // console.log("your final result :",result);
 
 
-let hi=[
-    {
-        name:"bhanu",
-        accountNumber:10001,
-        balance:10000,
-    },{
-        name:"jhanu",
-        accountNumber:20001,
-        balance:2000,
-    },{
-        name:"thanu",
-        accountNumber:30001,
-        balance:30000,
-    },{
-        name:"phanu",
-        accountNumber:40001,
-        balance:40000,
-    },{
-        name:"ahanu",
-        accountNumber:50001,
-        balance:500,
-    },{
-        name:"ihanu",
-        accountNumber:60001,
-        balance:60000,
-    },
-];
+// let hi=[
+//     {
+//         name:"bhanu",
+//         accountNumber:10001,
+//         balance:10000,
+//     },{
+//         name:"jhanu",
+//         accountNumber:20001,
+//         balance:2000,
+//     },{
+//         name:"thanu",
+//         accountNumber:30001,
+//         balance:30000,
+//     },{
+//         name:"phanu",
+//         accountNumber:40001,
+//         balance:40000,
+//     },{
+//         name:"ahanu",
+//         accountNumber:50001,
+//         balance:500,
+//     },{
+//         name:"ihanu",
+//         accountNumber:60001,
+//         balance:60000,
+//     },
+// ];
 
-let empt=[];
-for (let i=0;i<hi.length;i++){
-    if (hi[i].balance>10000)
-        empt.push(hi[i]);
-}
-console.log("The list of the rich one is :",empt);
+// let empt=[];
+// for (let i=0;i<hi.length;i++){
+//     if (hi[i].balance>10000)
+//         empt.push(hi[i]);
+// }
+// console.log("The list of the rich one is :",empt);
 
-let rich=hi[0];
-for (let i=0;i<hi.length;i++){
-    if (hi[i].balance>rich.balance)
-        rich=hi[i];
-}
+// let rich=hi[0];
+// for (let i=0;i<hi.length;i++){
+//     if (hi[i].balance>rich.balance)
+//         rich=hi[i];
+// }
 
-console.log("list of high no :",empt);
-console.log(`The rich one is ${rich.name} and the amt is ${rich.balances}`);
+// console.log("list of high no :",empt);
+// console.log(`The rich one is ${rich.name} and the amt is ${rich.balances}`);
 
 
 
@@ -466,3 +466,34 @@ console.log(`The rich one is ${rich.name} and the amt is ${rich.balances}`);
 // }
 // console.log("Filtered High Rollers: ", highRollers);
 // console.log(`The richest person is ${richestCustomer.name} with $${richestCustomer.balance}`);
+
+
+// let customers = [
+//     { name: "bhanu", accountNumber: 10001, balance: 15000 },
+// ];
+// let customers2 = [
+//     { name: "uhanu", accountNumber: 22001, balance: 55000 },
+// ];
+// let {name,balance}=customers+coustumer2;
+// console.log (`name is ${name} and the balance is ${balance}`)
+
+let databaseProfile={
+    customerId:1001, 
+    name:"bhanu", 
+    email:"Bhanuprakasht588@gmail.com",
+    phone:58493058,
+    }
+
+let formSubmission={
+    email:"janu@gmail.com",
+    phone:7897878,
+}
+function updateCustomerProfile(op1,op2){
+    let fin={
+        ...databaseProfile,
+        ...formSubmission,
+    }
+    return fin;
+}
+let result=updateCustomerProfile(databaseProfile,formSubmission)
+console.log("final list :",result);
